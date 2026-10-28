@@ -1,6 +1,6 @@
 # RL-Based Autonomous Intersection Navigation ADAS
 
-[![Python](https://img.shields.io/badge/Python-3.12%2B-3776AB.svg?style=flat-square\&logo=python\&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.10--3.11-3776AB.svg?style=flat-square\&logo=python\&logoColor=white)](https://www.python.org/)
 [![Simulator](https://img.shields.io/badge/Simulator-MetaDrive-2F6B4F.svg?style=flat-square)](https://github.com/metadriverse/metadrive)
 [![License](https://img.shields.io/github/license/sanjay8906/RL-Based_Autonomous_Intersection_Navigation_ADAS?style=flat-square)](LICENSE)
 [![Contributors](https://img.shields.io/github/contributors/sanjay8906/RL-Based_Autonomous_Intersection_Navigation_ADAS?style=flat-square)](https://github.com/sanjay8906/RL-Based_Autonomous_Intersection_Navigation_ADAS/graphs/contributors)
@@ -218,7 +218,7 @@ RL-Based_Autonomous_Intersection_Navigation_ADAS/
 
 | Technology             | Purpose                                   |
 | ---------------------- | ----------------------------------------- |
-| Python 3.12+           | Primary programming language              |
+| Python 3.10–3.11       | Runtime supported by MetaDrive 0.4.3      |
 | Reinforcement Learning | Autonomous decision-making                |
 | MetaDrive              | Autonomous driving simulation             |
 | uv                     | Python package and environment management |
@@ -339,7 +339,7 @@ The adapter architecture can also provide a path toward supporting additional si
 
 Before installing the project, ensure that the following software is available:
 
-* Python 3.12 or later
+* Python 3.10 (MetaDrive 0.4.3 requires Python below 3.12)
 * Git
 * uv
 
@@ -359,6 +359,7 @@ uv sync
 ```
 
 This creates and manages the project's Python environment based on the project configuration and lock file.
+The project dependencies include MetaDrive and the libraries used by its ADAS sensors and display.
 
 ### Activate the Environment
 
@@ -381,13 +382,19 @@ source .venv/bin/activate
 The current project entry point is:
 
 ```bash
-python src/main.py
+uv run python src/main.py
+```
+
+The default app configuration uses MetaDrive's built-in multi-block road network (`--map 3`) and starts in ADAS auto mode. Focus the MetaDrive simulator window and press `M` to switch between AUTO and MANUAL. Use `W/A/S/D` or the arrow keys in MANUAL mode: `W`/up accelerates, `A`/left and `D`/right steer, and `S`/down brakes. To start directly in MANUAL mode, add `--manual`:
+
+```bash
+uv run python src/main.py --manual
 ```
 
 For manual-control experimentation:
 
 ```bash
-python src/manual.py
+uv run python src/manual.py
 ```
 
 The execution workflow may change as the reinforcement learning environment and training pipeline are developed.

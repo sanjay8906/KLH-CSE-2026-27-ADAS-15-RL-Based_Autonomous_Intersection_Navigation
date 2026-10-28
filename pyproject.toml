@@ -3,8 +3,12 @@ name = "rl-based-autonomous-intersection-navigation-adas"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "metadrive-simulator==0.4.3",
+    "numpy>=1.21.6",
+    "opencv-python",
+]
 
 [dependency-groups]
 dev = [
